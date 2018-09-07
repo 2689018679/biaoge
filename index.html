@@ -29,6 +29,12 @@
     let btn=document.querySelector(".add")
     table.onclick=function (e) {
         console.log(e.target);
+        if(e.target.nodeName=="BUTTON"){
+            console.log(e.target.parentNode.parentNode);
+            table.childNodes[1].removeChild(e.target.parentNode.parentNode)
+        }
+    }
+    table.ondblclick=function (e) {
         if(e.target.nodeName=="TD"){
             let input=document.createElement("input");
             input.value=e.target.innerText;
@@ -39,11 +45,8 @@
                 e.target.innerText=input.value;
             }
         }
-        if(e.target.nodeName=="BUTTON"){
-            console.log(e.target.parentNode.parentNode);
-            table.childNodes[1].removeChild(e.target.parentNode.parentNode)
-        }
     }
+
     btn.onclick=function(){
         let tr=document.createElement("tr");
         tr.innerHTML=`<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td><button>删除</button></td>`;
